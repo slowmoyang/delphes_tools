@@ -37,6 +37,7 @@ sources = [
   'src/genparticle.cc',
   'src/utils.cc',
   'src/weight.cc',
+  'src/selection.cc',
 ]
 
 delphes_tools_dep = declare_dependency(

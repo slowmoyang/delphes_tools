@@ -9,43 +9,42 @@
 
 using namespace ROOT::Math;
 
-const GenParticle* getDaughter(const TClonesArray* gen_particle_array, size_t idx);
 
-std::vector<const GenParticle*> getDaughterVec(const GenParticle* mother, const TClonesArray* p_arr);
+std::vector<const GenParticle*> getDaughterVec(const GenParticle* mother, const std::vector<const GenParticle*>& p_arr);
 
 const GenParticle* getHardProcessMotherCopy(const GenParticle*,
-                                            const TClonesArray*);
+                                            const std::vector<const GenParticle*>&);
 
 // https://github.com/cms-sw/cmssw/blob/CMSSW_13_2_6_patch2/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L511-L523
 const GenParticle* getPreviousCopy(const GenParticle* p,
-                                   const TClonesArray* p_arr);
+                                   const std::vector<const GenParticle*>& p_arr);
 
 // https://github.com/cms-sw/cmssw/blob/CMSSW_13_2_6_patch2/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L525-L537
-const GenParticle* getNextCopy(const GenParticle* p, const TClonesArray* p_arr);
+const GenParticle* getNextCopy(const GenParticle* p, const std::vector<const GenParticle*>& p_arr);
 
 // https://github.com/cms-sw/cmssw/blob/CMSSW_13_2_6_patch2/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L392-L404
-const GenParticle* getFirstCopy(const GenParticle* p, const TClonesArray* p_arr);
+const GenParticle* getFirstCopy(const GenParticle* p, const std::vector<const GenParticle*>& p_arr);
 
 // https://github.com/cms-sw/cmssw/blob/CMSSW_13_2_6_patch2/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L406-L418
-const GenParticle* getLastCopy(const GenParticle* p, const TClonesArray* p_arr);
+const GenParticle* getLastCopy(const GenParticle* p, const std::vector<const GenParticle*>& p_arr);
 
-bool isFirstCopy(const GenParticle* p, const TClonesArray* p_arr);
+bool isFirstCopy(const GenParticle* p, const std::vector<const GenParticle*>& p_arr);
 
-bool isLastCopy(const GenParticle* p, const TClonesArray* p_arr);
+bool isLastCopy(const GenParticle* p, const std::vector<const GenParticle*>& p_arr);
 
 // https://github.com/cms-sw/cmssw/blob/CMSSW_13_2_6_patch2/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L265-L295
 // TODO
 bool isHardProcess(const GenParticle* p);
 
-bool isFromHardProcess(const GenParticle*, const TClonesArray*);
+bool isFromHardProcess(const GenParticle*, const std::vector<const GenParticle*>&);
 
 const GenParticle* findDaughter(const GenParticle* mother,
                                 const int pid,
-                                const TClonesArray* p_arr);
+                                const std::vector<const GenParticle*>& p_arr);
 
 const GenParticle* findLastDaughter(const GenParticle* mother,
                                 const int pid,
-                                const TClonesArray* p_arr);
+                                const std::vector<const GenParticle*>& p_arr);
 
 
 // match parton to jet with shortest distance
