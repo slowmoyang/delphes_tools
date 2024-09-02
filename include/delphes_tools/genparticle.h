@@ -2,7 +2,6 @@
 #define DELPHES_TOOLS_GENPARTICLE_H_
 
 
-#include "TClonesArray.h"
 #include "classes/DelphesClasses.h"
 #include <vector>
 
@@ -10,7 +9,7 @@
 using namespace ROOT::Math;
 
 
-std::vector<const GenParticle*> getDaughterVec(const GenParticle* mother, const std::vector<const GenParticle*>& p_arr);
+std::vector<const GenParticle*> getDaughters(const GenParticle* mother, const std::vector<const GenParticle*>& p_arr);
 
 const GenParticle* getHardProcessMotherCopy(const GenParticle*,
                                             const std::vector<const GenParticle*>&);

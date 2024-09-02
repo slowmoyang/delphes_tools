@@ -27,6 +27,26 @@ std::vector<const T*> runObjectSelection(const TClonesArray* arr,
 
     }
   }
+  output.shrink_to_fit();
+
+  return output;
+}
+
+template<typename T>
+std::vector<const T*> convertTClonesArrayToVector(const TClonesArray* arr) {
+  std::vector<const T*> output{};
+  output.reserve(arr->GetEntries());
+
+  for (int32_t idx = 0; idx < arr->GetEntries(); ++idx) {
+    if (auto obj = dynamic_cast<const T*>(arr->At(idx))) {
+      output.push_back(obj);
+
+    } else {
+      // TODO
+      throw std::runtime_error("failed to get");
+
+    }
+  }
 
   return output;
 }

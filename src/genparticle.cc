@@ -1,11 +1,5 @@
 #include "delphes_tools/genparticle.h"
-
-#include "TString.h"
 #include "classes/DelphesClasses.h"
-
-#include "TClonesArray.h"
-#include "Math/GenVector/PtEtaPhiM4D.h"
-#include "Math/Vector4Dfwd.h"
 #include "Math/GenVector/VectorUtil.h"
 
 #include <set>
@@ -20,7 +14,7 @@
 using namespace ROOT::Math;
 
 
-std::vector<const GenParticle*> getDaughterVec(const GenParticle* mother, const std::vector<const GenParticle*>& p_vec) {
+std::vector<const GenParticle*> getDaughters(const GenParticle* mother, const std::vector<const GenParticle*>& p_vec) {
   std::vector<const GenParticle*> output{};
   if (mother->D1 > 0) {
     output.reserve(mother->D2 - mother->D1 + 1);
@@ -76,7 +70,7 @@ const GenParticle* getPreviousCopy(const GenParticle* p,
 
 // https://github.com/cms-sw/cmssw/blob/CMSSW_13_2_6_patch2/PhysicsTools/HepMCCandAlgos/interface/MCTruthHelper.h#L525-L537
 const GenParticle* getNextCopy(const GenParticle* p, const std::vector<const GenParticle*>& p_vec) {
-  for (const auto& dau : getDaughterVec(p, p_vec)) {
+  for (const auto& dau : getDaughters(p, p_vec)) {
     if (dau->PID == p->PID) {
       return dau;
     }
@@ -141,7 +135,7 @@ const GenParticle* findDaughter(const GenParticle* mother,
                                 const int pid,
                                 const std::vector<const GenParticle*>& p_vec) {
   mother = getLastCopy(mother, p_vec);
-  for (const auto daughter : getDaughterVec(mother, p_vec)) {
+  for (const auto daughter : getDaughters(mother, p_vec)) {
     if (daughter->PID == pid) {
       return daughter;
     }

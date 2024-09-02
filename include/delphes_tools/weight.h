@@ -5,6 +5,9 @@
 #include <vector>
 
 class TClonesArray;
+class Weight;
+
+
 
 float getWeight(const TClonesArray* weight_arr, const size_t idx);
 
