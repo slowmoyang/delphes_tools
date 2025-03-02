@@ -34,10 +34,10 @@ delphes_dep = declare_dependency(
 # dependencies
 #------------------------------------------------------------------------------
 sources = [
-  'src/genparticle.cc',
-  'src/utils.cc',
-  'src/weight.cc',
-  'src/selection.cc',
+  'src/genparticle.cpp',
+  'src/utils.cpp',
+  'src/weight.cpp',
+  'src/selection.cpp',
 ]
 
 delphes_tools_dep = declare_dependency(
